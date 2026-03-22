@@ -1,10 +1,10 @@
 # Use Meson
 
-You need ==Meson== to compile the project,
+You need __Meson__ to compile the project,
 after installing it and it's dependencies
 use the code below
 
-==DO NOT FORGET== hydrate yourself :joy
+__DO NOT FORGET__, hydrate yourself 🍉
 
 ```bash
 meson setup build
@@ -13,7 +13,7 @@ meson compile
 ```
 
 
-## == // Dependencies // ==
+## -- // Dependencies // --
 
 ```txt
 sdl3
