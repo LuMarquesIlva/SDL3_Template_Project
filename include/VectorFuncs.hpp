@@ -3,19 +3,15 @@
 
 #include <vector>
 
-class Vector2 {
+class Vector2
+{
 public:
-    std::vector<float> vector2(float, float);
-    Vector2();
-    Vector2(std::vector<float> vector2(float, float));
-};
+    float x = 0.0;
+    float y = 0.0;
 
-class Vector3 {
-private:
-    std::vector<float> vector3(float, float, float);
-public:
-    Vector3();
-    Vector3(std::vector<float> vector3(float, float, float));
+    // Vector Class Constructor: Uses the two values to create a Vector2 type;
+    // the values can be accessed trought Vector2.x and Vector2.y
+    Vector2(float value1, float value2) : x(value1), y(value2) { std::vector<float> Vector2(value1, value2); };
 };
 
 #endif

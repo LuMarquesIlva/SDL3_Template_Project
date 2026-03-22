@@ -8,7 +8,7 @@
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
 
-static Object object;
+Vector2 vec2 = Vector2(60.0, 40.0);
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -29,7 +29,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 }
 
-SDL_FRect obj = object.createObject(60.0, 0.0, 50.0, 50.0);
+Object obj(1, 40, 60, 30, 30);
 
 /* This function runs when a new event (mouse input, keypresses, etc) occurs. */
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
@@ -42,16 +42,18 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     if (event->type == SDL_EVENT_KEY_DOWN) {
         switch (event->key.key) {
         case SDL_Keycode(SDLK_W):
-            obj.y -= 1;
+            obj.Rect.y -= 1;
             break;
         case SDL_Keycode(SDLK_A):
-            obj.x -= 1;
+            obj.Rect.x -= 1;
             break;
         case SDL_Keycode(SDLK_S):
-            obj.y += 1;
+            obj.Rect.y += 1;
+            SDL_Log("X: %f | Y: %f", obj.Rect.x, obj.Rect.y);
             break;
         case SDL_Keycode(SDLK_D):
-            obj.x += 1;
+            obj.Rect.x += 1;
+            SDL_Log("X: %f | Y: %f", obj.Rect.x, obj.Rect.y);
             break;
         default:
             SDL_Log("Invalid Input");
@@ -74,7 +76,7 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 
     SDL_SetRenderDrawColorFloat(renderer, 0.8, 0.8, 0.8, SDL_ALPHA_OPAQUE_FLOAT);
 
-    SDL_RenderFillRect(renderer, &obj);
+    SDL_RenderFillRect(renderer, &obj.Rect);
 
     /* put the newly-cleared rendering on the screen. */
     SDL_RenderPresent(renderer);
