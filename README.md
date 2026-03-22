@@ -1,13 +1,16 @@
 # Use Meson
 
-'''meson setup build
+'''bash
+meson setup build
 cd build
-meson compile'''
+meson compile
+'''
 
-## Dependencies
+## - // Dependencies // -
 
 sdl3
 sdl3_ttf
 sdl3_image
 glfw3
-VulkanHeaders
+vulkan-headers
+opencl-headers
