@@ -13,17 +13,23 @@ Vector2 vec2 = Vector2(60.0, 40.0);
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
-    SDL_SetAppMetadata("SDL Template", "1.0", "com.example.renderer-clear");
+    SDL_SetAppMetadata("SDL3 Template", "1.0", "com.example.sdl-template");
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Template SDL", 640, 480, SDL_WINDOW_RESIZABLE, &window, &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("Template SDL3", 640, 480, SDL_WINDOW_RESIZABLE, &window, &renderer)) {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
+
+    // Disables VSYNC to be compatible with older integrated GPUs
+    if (SDL_SetRenderVSync(renderer, SDL_RENDERER_VSYNC_DISABLED) == false) {
+    SDL_Log("Failed to disable VSync: %s", SDL_GetError());
+    }
+
     SDL_SetRenderLogicalPresentation(renderer, 640, 480, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
     return SDL_APP_CONTINUE;  /* carry on with the program! */
