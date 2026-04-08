@@ -14,13 +14,14 @@ Vector2 vec2 = Vector2(60.0, 40.0);
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
     SDL_SetAppMetadata("SDL3 Template", "1.0", "com.example.sdl-template");
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Template SDL3", 640, 480, SDL_WINDOW_RESIZABLE, &window, &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("Template SDL3", 640, 480, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL, &window, &renderer)) {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
@@ -61,6 +62,8 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
             obj.Rect.x += 1;
             SDL_Log("X: %f | Y: %f", obj.Rect.x, obj.Rect.y);
             break;
+        case SDLK_Q:
+            SDL_Quit();
         default:
             SDL_Log("Invalid Input");
             break;
@@ -73,14 +76,14 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 /* This function runs once per frame, and is the heart of the program. */
 SDL_AppResult SDL_AppIterate(void *appstate)
 {
-    const double now = ((double)SDL_GetTicks()) / 1000.0;  /* convert from milliseconds to seconds. */
+    //const double now = ((double)SDL_GetTicks()) / 1000.0;  /* convert from milliseconds to seconds. */
 
     SDL_SetRenderDrawColorFloat(renderer, 0.3, 0.3, 0.3, SDL_ALPHA_OPAQUE_FLOAT);  /* new color, full alpha. */
 
     /* clear the window to the draw color. */
     SDL_RenderClear(renderer);
 
-    SDL_SetRenderDrawColorFloat(renderer, 0.8, 0.8, 0.8, SDL_ALPHA_OPAQUE_FLOAT);
+    SDL_SetRenderDrawColorFloat(renderer, 0.2, 0.5, 0.8, SDL_ALPHA_OPAQUE_FLOAT);
 
     SDL_RenderFillRect(renderer, &obj.Rect);
 

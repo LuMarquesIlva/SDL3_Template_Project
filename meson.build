@@ -10,7 +10,6 @@ project(
 cc = meson.get_compiler('c')
 cxx = meson.get_compiler('cpp')
 
-
 sdl3_dep = dependency('sdl3')
 sdl3_ttf_dep = dependency('sdl3_ttf')
 sdl3_image_dep = dependency('sdl3_image')
@@ -23,12 +22,10 @@ glfw_dep = dependency('glfw3')
 #vulkan_headers_dep = dependency('VulkanHeaders', fallback: 'vulkan-headers')
 
 if host_machine.system() == 'windows'
-  message('SYSTEM IS WINDOWS')
+  message('SYSTEM IS WINDOWS - using custom win config\n')
   win = import('windows')
-  #manifest = meson.project_name() + '.manifest'
   icon = 'icon.rc'
   res_file = win.compile_resources(icon)
-  #manifest_file = win.compile_resources(manifest)
   
   executable(
     meson.project_name(),
@@ -39,6 +36,7 @@ if host_machine.system() == 'windows'
     dependencies: [sdl3_dep, sdl3_ttf_dep, sdl3_image_dep, glfw_dep],
   )
 else
+message('SYSTEM IS NOT WINDOWS - not using custom win config\n')
   executable(
     meson.project_name(),
     sources: ['src/main.cpp', 'src/Entity.cpp', 'src/VectorFuncs.cpp'],
