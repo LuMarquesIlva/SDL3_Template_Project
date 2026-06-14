@@ -6,18 +6,6 @@ use the commands below
 
 __DO NOT FORGET__, hydrate yourself 🍉
 
-__Auto Setup Project (Recommended)__
-
-# run ```bash uv run build.py```
-
-__Manual Base Meson Setup Project__
-```bash
-meson setup build
-cd build
-meson compile
-```
-
-
 ## -- // Project Dependencies // --
 
 ```txt
@@ -27,6 +15,17 @@ sdl3_image
 glfw3
 vulkan-headers
 opencl-headers
+```
+
+## __Auto Setup Project (Recommended)__
+
+run ```bash uv run build.py```
+
+## __Manual Base Meson Setup Project__
+```bash
+meson setup build
+cd build
+meson compile
 ```
 
 # __IF WORKING WITH TERMUX__
