@@ -1,6 +1,6 @@
 project(
   'SDL3_Template_Project',
-  'cpp',
+  'cpp', 'c',
   meson_version: '>=1.1.0',
   version: '0.0.1',
   default_options: ['default_library=static',

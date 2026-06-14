@@ -1,0 +1,12 @@
+[project]
+name = "sdl3-template-project"
+version = "1.0.0"
+description = "A Template For Building An SDL3 Project With Meson On A Venv"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "meson>=1.11.1",
+]

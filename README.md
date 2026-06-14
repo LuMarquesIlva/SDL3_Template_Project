@@ -6,7 +6,10 @@ use the commands below
 
 __DO NOT FORGET__, hydrate yourself 🍉
 
-__base meson setup project__
+__Auto Setup Project (Recommended)__
+run build.py
+
+__Manual Base Meson Setup Project__
 ```bash
 meson setup build
 cd build
@@ -14,7 +17,7 @@ meson compile
 ```
 
 
-## -- // Dependencies // --
+## -- // Project Dependencies // --
 
 ```txt
 sdl3
@@ -31,7 +34,7 @@ install these packages using normal pkg system
 ```bash
 pkg i sdl3 build-essentials ninja wine-stable llvm-mingw-w64
 ```
-and __if cross compiling for windows__ install sdl3, freetype2 and glfw with wrap and then setup with
+and __if cross compiling for windows or if your system does not have the packages mentioned__ install sdl3, sdl3_ttf, sdl3_image, freetype2 and glfw with wrap and then setup with below command, otherwise do not use the __cross-file__ argument
 ```bash
 meson setup --cross-file x86_64-w64-mingw32.txt <build-dir>
 ```

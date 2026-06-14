@@ -1,4 +1,4 @@
-build*
+build/*
 *build
-subprojects
+subprojects/*
 icon.ico*
