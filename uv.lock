@@ -12,7 +12,7 @@ wheels = [
 
 [[package]]
 name = "sdl3-template-project"
-version = "0.1.0"
+version = "1.0.0"
 source = { virtual = "." }
 
 [package.dev-dependencies]

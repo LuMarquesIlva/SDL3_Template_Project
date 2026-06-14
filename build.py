@@ -1,4 +1,4 @@
-#!bash source .venv/bin/activate
+#!.venv/bin/python
 import subprocess
 
 builddir = 'build'

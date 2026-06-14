@@ -2,3 +2,5 @@ build/*
 *build
 subprojects/*
 icon.ico*
+
+!subprojects/dummy.txt

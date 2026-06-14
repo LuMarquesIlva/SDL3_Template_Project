@@ -7,7 +7,8 @@ use the commands below
 __DO NOT FORGET__, hydrate yourself 🍉
 
 __Auto Setup Project (Recommended)__
-run build.py
+
+# run ```bash uv run build.py```
 
 __Manual Base Meson Setup Project__
 ```bash
