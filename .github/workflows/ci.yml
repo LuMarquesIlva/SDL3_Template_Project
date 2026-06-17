@@ -38,7 +38,7 @@ jobs:
 
       - name: Configure Project (Meson Setup)
         run: meson subprojects download
-        run: meson setup build/ --wrap-mode=forcefallback
+        run: meson setup build --wrap-mode=forcefallback
 
       - name: Compile Code
         run: meson compile -C build

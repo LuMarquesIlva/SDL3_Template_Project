@@ -3,4 +3,4 @@ build/*
 subprojects/*
 icon.ico*
 
-!subprojects/dummy.txt
+!subprojects/*.wrap
