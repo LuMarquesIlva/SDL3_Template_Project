@@ -1,4 +1,6 @@
-build*
+build/*
 *build
-subprojects
+subprojects/*
 icon.ico*
+
+!subprojects/dummy.txt

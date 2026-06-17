@@ -46,6 +46,18 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
         return SDL_APP_SUCCESS;  /* end the program, reporting success to the OS. */
     }
 
+    if (event->type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+        switch(event->button.down) {
+        case 1:
+            obj.Rect.x = event->button.x;
+            obj.Rect.y = event->button.y;
+            break;
+        default:
+            SDL_Log("Unknown Button");
+            break;
+        }
+    }
+
     if (event->type == SDL_EVENT_KEY_DOWN) {
         switch (event->key.key) {
         case SDL_Keycode(SDLK_W):
@@ -64,6 +76,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
             break;
         case SDLK_Q:
             SDL_Quit();
+            break;
         default:
             SDL_Log("Invalid Input");
             break;
