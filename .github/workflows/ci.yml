@@ -37,13 +37,13 @@ jobs:
           # Add any system libraries your project requires here (e.g., libglib2.0-dev)
 
       - name: Configure Project (Meson Setup)
-        run: uv sync
         run: meson wrap install sdl3
         run: meson wrap install sdl3_ttf
         run: meson wrap install sdl3_image
+        run: meson setup build
 
       - name: Compile Code
-        run: uv run build.py
+        run: meson compile -C build
 
       - name: Run Unit Tests
         run: meson test -C build
