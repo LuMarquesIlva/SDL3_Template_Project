@@ -3,10 +3,21 @@ name = "sdl3-template-project"
 version = "1.0.0"
 description = "A Template For Building An SDL3 Project With Meson On A Venv"
 readme = "README.md"
-requires-python = ">=3.14"
-dependencies = []
+requires-python = ">=3.13"
+dependencies = [
+    "legacy-cgi; python_version >= '3.13'"
+]
 
 [dependency-groups]
 dev = [
     "meson>=1.11.1",
+    "cython<=3.1.0",
+    "kivy>=2.3.1",
+    "pillow>=12.2.0",
+    "pygame>=2.6.1",
+    "legacy-cgi>=2.6.4",
 ]
+
+[tool.uv.extra-build-dependencies]
+    cython = ["legacy-cgi"]
+    kivy = ["cython<=3.1.0"]

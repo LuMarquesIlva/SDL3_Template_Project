@@ -12,13 +12,14 @@ class Input
     public:
         struct States {
             std::array<bool, 5> MouseStates;
+            std::array<bool, 5> KeyboardStates;
 
             void ChangeValue(bool value, int index) {
                 MouseStates[index] = value;
             };
 
             void FillWithValue(bool value) {
-                for (int i = 0; i < MouseStates.size(); i++) {
+                for (int i = 0; i < (int)MouseStates.size(); i++) {
                     MouseStates[i] = value;
                 };
             };
