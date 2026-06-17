@@ -33,7 +33,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt install build-essential
+          sudo apt install build-essential libudev-dev libusb-1.0-0-dev libglfw3-dev
           # Add any system libraries your project requires here (e.g., libglib2.0-dev)
 
       - name: Configure Project (Meson Setup)
