@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.14'
 
       - name: Install Ninja and Meson
         run: |
@@ -37,8 +37,9 @@ jobs:
           # Add any system libraries your project requires here (e.g., libglib2.0-dev)
 
       - name: Configure Project (Meson Setup)
-        run: meson subprojects download
-        run: meson setup build --wrap-mode=forcefallback
+        run: |
+            meson subprojects download
+            meson setup build --wrap-mode=forcefallback
 
       - name: Compile Code
         run: meson compile -C build
