@@ -37,10 +37,7 @@ jobs:
           # Add any system libraries your project requires here (e.g., libglib2.0-dev)
 
       - name: Configure Project (Meson Setup)
-        run: meson wrap install sdl3
-        run: meson wrap install sdl3_ttf
-        run: meson wrap install sdl3_image
-        run: meson setup build
+        run: meson setup build/ --wrap-mode=forcefallback
 
       - name: Compile Code
         run: meson compile -C build
