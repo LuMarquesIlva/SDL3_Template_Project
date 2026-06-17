@@ -1,5 +1,6 @@
 #!.venv/bin/python
 import subprocess
+import os
 
 builddir = 'build'
 reconf = False
@@ -8,6 +9,11 @@ wipe = False
 def run_meson_build(build_dir=builddir):
     # 1. Configure the build (equivalent to 'meson setup build')
     # Note: Replace 'meson' with 'python -m mesonbuild.mesonmain' if meson is not in PATH
+
+    preSetup_cmd = ['meson', 'subprojects', 'download']
+    print(f"Running: {' '.join(preSetup_cmd)}")
+    subprocess.run(preSetup_cmd, check=True)
+
     if reconf is False and wipe is False:
         setup_cmd = ['meson', 'setup', build_dir]
         print(f"Running: {' '.join(setup_cmd)}")
