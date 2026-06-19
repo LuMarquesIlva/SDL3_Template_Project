@@ -10,8 +10,8 @@ static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
 
 Vector2 vec2 = Vector2(60.0, 40.0);
-Input::States inputStates;
 Input input;
+Input::States InputStates;
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
@@ -36,7 +36,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 
     SDL_SetRenderLogicalPresentation(renderer, 640, 480, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
-    input.Init();
+    //input.Init();
 
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 }
@@ -47,20 +47,20 @@ Object obj(1, 40, 60, 30, 30);
 SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
 {
 
-    input.UpdateMouse(event);
+    InputStates.UpdateMouse(event);
 
     if (event->type == SDL_EVENT_QUIT) {
         return SDL_APP_SUCCESS;  /* end the program, reporting success to the OS. */
     }
     
-    if (inputStates.IsButtonDown(1) == true) {
-        SDL_Log("TESTE");
+    if (InputStates.IsMouseButtonDown(1) == true) {
         obj.Rect.x = event->button.x;
         obj.Rect.y = event->button.y;
-        SDL_Log("FUNCIONA");
     }
 
+    // Keyboard Input Update
     if (event->type == SDL_EVENT_KEY_DOWN) {
+
         switch (event->key.key) {
         case SDL_Keycode(SDLK_W):
             obj.Rect.y -= 1;
@@ -78,6 +78,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
             break;
         case SDLK_Q:
             SDL_Quit();
+            return SDL_APP_SUCCESS;
             break;
         default:
             SDL_Log("Invalid Input");
