@@ -1,6 +1,6 @@
 [project]
 name = "sdl3-template-project"
-version = "1.0.0"
+version = "0.1.0"
 description = "A Template For Building An SDL3 Project With Meson On A Venv"
 readme = "README.md"
 requires-python = ">=3.13"

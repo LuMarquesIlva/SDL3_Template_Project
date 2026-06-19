@@ -11,31 +11,60 @@ class Input
 {
     public:
         struct States {
-            std::array<bool, 5> MouseStates;
-            std::array<bool, 5> KeyboardStates;
+            int numkeys = 0;
 
-            void ChangeValue(bool value, int index) {
-                MouseStates[index] = value;
+            std::array<bool, 5> MouseStates {false, false, false, false, false};
+            const bool* KeyboardState = SDL_GetKeyboardState(&numkeys);
+
+            void UpdateMouse(SDL_Event *events);
+
+            void ChangeMouseValue(bool value, int index) {
+               this->MouseStates.at(index) = value;
             };
 
-            void FillWithValue(bool value) {
+            void FillMouseListWithValue(bool value) {
                 for (int i = 0; i < (int)MouseStates.size(); i++) {
-                    MouseStates[i] = value;
+                    this->MouseStates.at(i) = value;
                 };
             };
 
-            bool IsButtonDown(int index) {
-                if (MouseStates[index-1] == true) {
-                    return true;
+            bool IsMouseButtonDown(int index) {
+                if (index != 0) {
+                    if (this->MouseStates.at(index-1) == true) {
+                        return true;
+                    };
+                } else {
+                    if (this->MouseStates.at(index) == true) {
+                        return true;
+                    };
                 };
+                
+                return false;
+            };
+
+            void ChangePressedValue(int index) {
+                
+            }
+
+            bool IsKeyDown(SDL_Scancode Key) {
+                
+                // Iterate trought the keyboard list
+                for (int i = 0; i < numkeys; i++) {
+
+                    if (this->KeyboardState[i] == true) {
+                        // Convert scancode integer to keycode
+                        SDL_Keycode Keycode = SDL_SCANCODE_TO_KEYCODE(i);
+
+                        if (Keycode == Key) {
+                            return true;
+                        }
+                        return false;
+                    };
+                };
+                
                 return false;
             };
         };
-
-        void Init();
-        
-        void UpdateMouse(SDL_Event *event);
-        //explicit operator SDL_Event *() const { return InputEvents; };
         
 };
 

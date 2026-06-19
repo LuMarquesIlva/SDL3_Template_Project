@@ -2,7 +2,7 @@ project(
   'SDL3_Template_Project',
   'cpp', 'c',
   meson_version: '>=1.1.0',
-  version: '0.0.1',
+  version: '0.1.0',
   default_options: ['default_library=static',
   'cpp_std=c++23,c++20,c++17'],
 )
