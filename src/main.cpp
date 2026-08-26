@@ -16,7 +16,7 @@ Input::States InputStates;
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
-    SDL_SetAppMetadata("SDL3 Template", "1.0", "com.example.sdl-template");
+    SDL_SetAppMetadata("Doom Engine Clone", "1.0", "com.example.doom-engine-clone");
     SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 
     if (!SDL_Init(SDL_INIT_VIDEO)) {
@@ -24,7 +24,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    if (!SDL_CreateWindowAndRenderer("Template SDL3", 640, 480, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL, &window, &renderer)) {
+    if (!SDL_CreateWindowAndRenderer("Doom Engine Clone", 640, 480, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL, &window, &renderer)) {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
@@ -52,7 +52,7 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event)
     if (event->type == SDL_EVENT_QUIT) {
         return SDL_APP_SUCCESS;  /* end the program, reporting success to the OS. */
     }
-    
+
     if (InputStates.IsMouseButtonDown(1) == true) {
         obj.Rect.x = event->button.x;
         obj.Rect.y = event->button.y;

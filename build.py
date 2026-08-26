@@ -9,7 +9,7 @@ SETTINGSLIST = [
     ["builddir", 'build'],
     ["reconf", False],
     ["wipe", False],
-    ["download", False]
+    ["download", True]
 ]
 
 def run_meson_build(build_dir=SETTINGSLIST[0]):

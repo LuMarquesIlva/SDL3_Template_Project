@@ -1,5 +1,5 @@
 project(
-  'SDL3_Template_Project',
+  'Doom Engine Clone',
   'cpp', 'c',
   meson_version: '>=1.1.0',
   version: '0.1.0',
@@ -26,7 +26,7 @@ if host_machine.system() == 'windows'
   win = import('windows')
   icon = 'icon.rc'
   res_file = win.compile_resources(icon)
-  
+
   executable(
     meson.project_name(),
     sources: ['src/main.cpp', 'src/Entity.cpp', 'src/VectorFuncs.cpp', 'src/Input.cpp'],
@@ -44,4 +44,3 @@ message('SYSTEM IS NOT WINDOWS - not using custom win config\n')
     dependencies: [sdl3_dep, sdl3_ttf_dep, sdl3_image_dep, glfw_dep],
   )
 endif
-
