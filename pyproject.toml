@@ -1,7 +1,7 @@
 [project]
-name = "doom-engine-clone"
+name = "SDL3_Template_Project"
 version = "0.1.0"
-description = "Doom Engine Clone for learing"
+description = "SDL3 Template"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

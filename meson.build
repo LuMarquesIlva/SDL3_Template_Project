@@ -1,5 +1,5 @@
 project(
-  'Doom Engine Clone',
+  'SDL3 Template Project',
   'cpp', 'c',
   meson_version: '>=1.1.0',
   version: '0.1.0',
